@@ -1,4 +1,4 @@
-package config;
+package com.example.quartz.config;
 
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;

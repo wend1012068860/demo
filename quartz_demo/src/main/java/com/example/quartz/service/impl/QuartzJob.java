@@ -1,4 +1,4 @@
-package service.impl;
+package com.example.quartz.service.impl;
 
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobExecutionContext;

@@ -1,9 +1,9 @@
-package utils;
+package com.example.quartz.utils;
 
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import service.impl.QuartzJob;
+import com.example.quartz.service.impl.QuartzJob;
 
 import java.util.Date;
 
