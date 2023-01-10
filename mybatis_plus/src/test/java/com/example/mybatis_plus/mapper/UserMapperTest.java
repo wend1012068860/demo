@@ -1,6 +1,9 @@
 package com.example.mybatis_plus.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatis_plus.MybatisPlusApplication;
 import com.example.mybatis_plus.entity.User;
 import javafx.application.Application;
@@ -11,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Wrapper;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -29,31 +32,14 @@ public class UserMapperTest {
     private UserMapper userMapper;
 
     /**
-     * 查询
-     */
-    @Test
-    public void selectTest(){
-
-        // 查询全部用户，参数是一个Wrapper，条件构造器，先不使用为null
-        // UserMapper中的selectList()方法的参数为MP内置的条件封装器Wrapper，所以不填写就是无任何条件
-//        List<User> userList = userMapper.selectList(null);
-        QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("name", "Jone");
-        wrapper.eq("age", 18);
-        List<User> userList = userMapper.selectList(wrapper);
-        System.out.println(userList.toString());
-
-    }
-
-    /**
      * 新增
      */
     @Test
     public void insertTest(){
         User user = new User();
-        user.setName("李四");
-        user.setAge(22);
-        user.setEmail("lisi@qq.com");
+        user.setName("王五");
+        user.setAge(25);
+        user.setEmail("wangwu@qq.com");
 
         int insert = userMapper.insert(user);//如果没有设置id，那么会自动生成id
         System.out.println(insert);//受影响行数
@@ -62,10 +48,17 @@ public class UserMapperTest {
     }
 
     /**
-     * 更新
+     * 根据id删除
+     */
+    public void deleteById(){
+        userMapper.deleteById(4L);
+    }
+
+    /**
+     * 根据id更新
      */
     @Test
-    public void updateTest(){
+    public void updateByIdTest(){
         User user = new User();
         user.setId(2L);
         user.setEmail("44@qq.com");
@@ -74,5 +67,82 @@ public class UserMapperTest {
         System.out.println(userMapper.selectById(2L));
     }
 
+    /**
+     * 查询全部
+     */
+    @Test
+    public void selectAllTest(){
+        List<User> users = userMapper.selectList(null);
+        System.out.println(users);
+    }
 
+    /**
+     * 根据id查询
+     */
+    @Test
+    public void selectByIdTest(){
+        User user = userMapper.selectById(1L);
+        System.out.println(user);
+    }
+
+    /**
+     * 分页查询
+     */
+    @Test
+    public void selectPageTest(){
+        IPage page = new Page(1,2);
+        userMapper.selectPage(page,null);
+        System.out.println("当前页码：" + page.getCurrent());
+        System.out.println("每页大小：" + page.getSize());
+        System.out.println("总页码数：" + page.getPages());
+        System.out.println("总条数：" + page.getTotal());
+        System.out.println("数据：" + page.getRecords());
+    }
+
+    /**
+     * 条件查询
+     */
+    @Test
+    public void selectTest(){
+        //方式一：按条件查询
+//        QueryWrapper wrapper = new QueryWrapper<>();
+//        wrapper.lt("age",18);
+//        List<User> users = userMapper.selectList(wrapper);
+//        System.out.println(users);
+
+        //方式二：lambda按条件查询
+//        QueryWrapper<User> wrapper = new QueryWrapper<>();
+//        wrapper.lambda().lt(User::getAge,22);
+//        List<User> users = userMapper.selectList(wrapper);
+//        System.out.println(users);
+
+        //方式三：lambda按条件查询
+//        LambdaQueryWrapper<User> lwq = new LambdaQueryWrapper<>();
+//        lwq.lt(User::getAge,22);
+//        List<User> users = userMapper.selectList(lwq);
+//        System.out.println(users);
+
+//        LambdaQueryWrapper<User> lwq = new LambdaQueryWrapper<>();
+        // 21-22岁
+//        lwq.lt(User::getAge,22);
+//        lwq.gt(User::getAge,21);
+        // 链式写法
+//        lwq.lt(User::getAge,22).gt(User::getAge,21);
+        // 小于21 或 大于22
+//        lwq.lt(User::getAge,21).or().gt(User::getAge,22);
+//        List<User> users = userMapper.selectList(lwq);
+//        System.out.println(users);
+
+        //查询投影
+//        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+//        wrapper.select(User::getName, User::getEmail);
+//        List<User> userList = userMapper.selectList(wrapper);
+//        System.out.println(userList);
+
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.select("count(*) as count, age");
+        wrapper.groupBy("age");
+        List<Map<String, Object>> userList = userMapper.selectMaps(wrapper);
+        System.out.println(userList);
+    }
 }
