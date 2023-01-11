@@ -139,10 +139,31 @@ public class UserMapperTest {
 //        List<User> userList = userMapper.selectList(wrapper);
 //        System.out.println(userList);
 
-        QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.select("count(*) as count, age");
-        wrapper.groupBy("age");
-        List<Map<String, Object>> userList = userMapper.selectMaps(wrapper);
-        System.out.println(userList);
+//        QueryWrapper<User> wrapper = new QueryWrapper<>();
+//        wrapper.select("count(*) as count, age");
+//        wrapper.groupBy("age");
+//        List<Map<String, Object>> userList = userMapper.selectMaps(wrapper);
+//        System.out.println(userList);
+
+        //各种条件查询
+//        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+//        // 等于 eq
+//        lqw.eq(User::getName, "张三");
+//        User user = userMapper.selectOne(lqw);
+//        System.out.println(user);
+
+//        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+//        //范围查询 lt le gt ge between
+//        lqw.between(User::getAge, 21,25);
+//        List<User> users = userMapper.selectList(lqw);
+//        System.out.println(users);
+
+        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+        //模糊查询 like
+        lqw.like(User::getName, "李");
+        List<User> users = userMapper.selectList(lqw);
+        System.out.println(users);
+
+
     }
 }
