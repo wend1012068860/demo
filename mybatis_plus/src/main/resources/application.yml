@@ -5,7 +5,19 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
-#������־
+#配置日志
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#  #全局配置
+#  global-config:
+#    db-config:
+#      #id生成策略
+#      id-type: auto
+#      #表明前缀
+#      table-prefix: tbl_
+#      #逻辑删除
+#      logic-delete-field: deleted
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0

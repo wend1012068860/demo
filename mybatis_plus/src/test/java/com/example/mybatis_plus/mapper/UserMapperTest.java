@@ -37,7 +37,7 @@ public class UserMapperTest {
     @Test
     public void insertTest(){
         User user = new User();
-        user.setName("王五");
+        user.setName("赵四");
         user.setAge(25);
         user.setEmail("wangwu@qq.com");
 
@@ -164,6 +164,15 @@ public class UserMapperTest {
         List<User> users = userMapper.selectList(lqw);
         System.out.println(users);
 
-
     }
+
+    /**
+     * 逻辑删除测试
+     */
+    @Test
+    public void logicDeleteTest(){
+        userMapper.deleteById(1L);
+    }
+
+
 }

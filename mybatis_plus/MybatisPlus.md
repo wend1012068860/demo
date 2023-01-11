@@ -44,3 +44,33 @@ mybatis-plus:
 
 条件构造器：https://baomidou.com/pages/10c804/#abstractwrapper
 
+## 五、映射兼容性
+
+1、实体类字段和数据库字段不对应![image-20230111210224867](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111210224867.png)
+
+2、实体类中有，数据库没有
+
+![image-20230111210634949](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111210634949.png)
+
+3、不参与查询的字段，如password
+
+![image-20230111211341710](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111211341710.png)
+
+4、表明映射
+
+![image-20230111211508880](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111211508880.png)
+
+## 六、id生成策略
+
+![image-20230111211743955](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111211743955.png)
+
+## 七、逻辑删除
+
+![image-20230111214417714](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111214417714.png)
+
+注：默认值别忘了
+
+![image-20230111214509700](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111214509700.png)
+
+![image-20230111214518425](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111214518425.png)
+

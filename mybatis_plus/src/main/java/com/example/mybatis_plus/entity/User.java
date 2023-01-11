@@ -2,6 +2,7 @@ package com.example.mybatis_plus.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 
 /**
  * @authoer:WangMengqiang
@@ -15,6 +16,9 @@ public class User {
     private String name;
     private Integer age;
     private String email;
+
+    @TableLogic(value = "0", delval = "1")
+    private Integer deleted;
 
     public Long getId() {
         return id;
@@ -48,6 +52,14 @@ public class User {
         this.email = email;
     }
 
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -55,6 +67,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
+                ", deleted=" + deleted +
                 '}';
     }
 }
