@@ -46,33 +46,33 @@ mybatis-plus:
 
 ## 五、映射兼容性
 
-1、实体类字段和数据库字段不对应![image-20230111210224867](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111210224867.png)
+1、实体类字段和数据库字段不对应![image-20230111210224867](../mybatis_plus/pic/5.1.png)
 
 2、实体类中有，数据库没有
 
-![image-20230111210634949](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111210634949.png)
+![image-20230111210634949](../mybatis_plus/pic/5.2.png)
 
 3、不参与查询的字段，如password
 
-![image-20230111211341710](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111211341710.png)
+![image-20230111211341710](../mybatis_plus/pic/5.3.png)
 
 4、表明映射
 
-![image-20230111211508880](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111211508880.png)
+![image-20230111211508880](../mybatis_plus/pic/5.4.png)
 
 ## 六、id生成策略
 
-![image-20230111211743955](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111211743955.png)
+![image-20230111211743955](../mybatis_plus/pic/6.1.png)
 
 ## 七、逻辑删除
 
-![image-20230111214417714](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111214417714.png)
+![image-20230111214417714](../mybatis_plus/pic/7.1.png)
 
 注：默认值别忘了
 
-![image-20230111214509700](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111214509700.png)
+![image-20230111214509700](../mybatis_plus/pic/7.2.png)
 
-![image-20230111214518425](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111214518425.png)
+![image-20230111214518425](../mybatis_plus/pic/7.3.png)
 
 ## 八、乐观锁
 
