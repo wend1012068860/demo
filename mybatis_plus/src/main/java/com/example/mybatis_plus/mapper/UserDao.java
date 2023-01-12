@@ -8,7 +8,7 @@ import com.example.mybatis_plus.entity.User;
  * @createDate:2023/1/6
  * @description:
  */
-public interface UserMapper extends BaseMapper<User> {
-    //ËùÓÐµÄCRUD¶¼ÒÑ¾­Íê³É
-    //²»ÐèÒªÏñÒÔÇ°Ò»ÑùÅäÖÃÒ»´ó¶ÑÎÄ¼þ£ºpojo-dao£¨Á¬½Ómybatis£¬ÅäÖÃmapper.xmlÎÄ¼þ£©==>service-controlle
+public interface UserDao extends BaseMapper<User> {
+    //æ‰€æœ‰çš„CRUDéƒ½å·²ç»å®Œæˆ
+    //ä¸éœ€è¦åƒä»¥å‰ä¸€æ ·é…ç½®ä¸€å¤§å †æ–‡ä»¶ï¼špojo-daoï¼ˆè¿žæŽ¥mybatisï¼Œé…ç½®mapper.xmlæ–‡ä»¶ï¼‰==>service-controlle
 }

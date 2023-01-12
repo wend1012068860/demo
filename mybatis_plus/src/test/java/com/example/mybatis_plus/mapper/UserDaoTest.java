@@ -1,22 +1,17 @@
 package com.example.mybatis_plus.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatis_plus.MybatisPlusApplication;
 import com.example.mybatis_plus.entity.User;
-import javafx.application.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.sql.Wrapper;
 import java.util.*;
-
-import static org.junit.Assert.*;
 
 /**
  * @authoer:WangMengqiang
@@ -26,10 +21,10 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MybatisPlusApplication.class)
-public class UserMapperTest {
+public class UserDaoTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
 
     /**
      * 新增
@@ -41,7 +36,7 @@ public class UserMapperTest {
         user.setAge(25);
         user.setEmail("wangwu@qq.com");
 
-        int insert = userMapper.insert(user);//如果没有设置id，那么会自动生成id
+        int insert = userDao.insert(user);//如果没有设置id，那么会自动生成id
         System.out.println(insert);//受影响行数
         System.out.println(user);//id会自动回填
 
@@ -51,7 +46,7 @@ public class UserMapperTest {
      * 根据id删除
      */
     public void deleteById(){
-        userMapper.deleteById(4L);
+        userDao.deleteById(4L);
     }
 
     /**
@@ -62,9 +57,9 @@ public class UserMapperTest {
         User user = new User();
         user.setId(2L);
         user.setEmail("44@qq.com");
-        int result = userMapper.updateById(user);
+        int result = userDao.updateById(user);
         System.out.println(result);
-        System.out.println(userMapper.selectById(2L));
+        System.out.println(userDao.selectById(2L));
     }
 
     /**
@@ -72,7 +67,7 @@ public class UserMapperTest {
      */
     @Test
     public void selectAllTest(){
-        List<User> users = userMapper.selectList(null);
+        List<User> users = userDao.selectList(null);
         System.out.println(users);
     }
 
@@ -81,7 +76,7 @@ public class UserMapperTest {
      */
     @Test
     public void selectByIdTest(){
-        User user = userMapper.selectById(1L);
+        User user = userDao.selectById(1L);
         System.out.println(user);
     }
 
@@ -91,7 +86,7 @@ public class UserMapperTest {
     @Test
     public void selectPageTest(){
         IPage page = new Page(1,2);
-        userMapper.selectPage(page,null);
+        userDao.selectPage(page,null);
         System.out.println("当前页码：" + page.getCurrent());
         System.out.println("每页大小：" + page.getSize());
         System.out.println("总页码数：" + page.getPages());
@@ -161,7 +156,7 @@ public class UserMapperTest {
         LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
         //模糊查询 like
         lqw.like(User::getName, "李");
-        List<User> users = userMapper.selectList(lqw);
+        List<User> users = userDao.selectList(lqw);
         System.out.println(users);
 
     }
@@ -171,8 +166,28 @@ public class UserMapperTest {
      */
     @Test
     public void logicDeleteTest(){
-        userMapper.deleteById(1L);
+        userDao.deleteById(1L);
     }
 
+    /**
+     * 乐观锁测试
+     */
+    @Test
+    public void versionTest(){
+//        User user = new User();
+//        user.setId(1L);
+//        user.setEmail("111@qq.com");
+//        user.setVersion(1);
+//        userMapper.updateById(user);
+
+        User user = userDao.selectById(1L);
+        User user2 = userDao.selectById(1L);
+
+        user.setName("张三aaa");
+        userDao.updateById(user); //成功
+
+        user2.setName("张三bbb");
+        userDao.updateById(user2);  //失败
+    }
 
 }

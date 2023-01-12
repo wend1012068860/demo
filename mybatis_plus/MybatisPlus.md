@@ -74,3 +74,26 @@ mybatis-plus:
 
 ![image-20230111214518425](C:\Users\风丶无痕\AppData\Roaming\Typora\typora-user-images\image-20230111214518425.png)
 
+## 八、乐观锁
+
+![image-20230112093341124](../mybatis_plus/pic/8.1.png)
+
+![image-20230112093552525](../mybatis_plus/pic/8.2.png)
+
+![image-20230112093631965](../mybatis_plus/pic/8.3.png)
+
+![image-20230112093713329](../mybatis_plus/pic/8.4.png)
+
+## 九、代码生成器
+
+![image-20230112101319418](../mybatis_plus/pic/9.1.png)
+
+![image-20230112101343158](../mybatis_plus/pic/9.2.png)
+
+![image-20230112101424322](../mybatis_plus/pic/9.3.png)
+
+![image-20230112101455636](../mybatis_plus/pic/9.4.png)
+
+![image-20230112101515834](../mybatis_plus/pic/9.5.png)
+
+![image-20230112101537686](../mybatis_plus/pic/9.6.png)

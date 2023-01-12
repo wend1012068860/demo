@@ -3,6 +3,7 @@ package com.example.mybatis_plus.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
 
 /**
  * @authoer:WangMengqiang
@@ -19,6 +20,9 @@ public class User {
 
     @TableLogic(value = "0", delval = "1")
     private Integer deleted;
+
+    @Version
+    private Integer version;
 
     public Long getId() {
         return id;
@@ -60,6 +64,14 @@ public class User {
         this.deleted = deleted;
     }
 
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -68,6 +80,7 @@ public class User {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", deleted=" + deleted +
+                ", version=" + version +
                 '}';
     }
 }
