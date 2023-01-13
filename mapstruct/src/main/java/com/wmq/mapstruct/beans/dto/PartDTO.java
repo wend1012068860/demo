@@ -1,13 +1,9 @@
 package com.wmq.mapstruct.beans.dto;
 
 public class PartDTO {
-    /**
-     * id
-     */
+
     private Long id;
-    /**
-     * Áã¼şÃû×Ö
-     */
+
     private String partName;
 
     public Long getId() {

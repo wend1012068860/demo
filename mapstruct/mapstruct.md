@@ -6,9 +6,9 @@
 
 ## 一、使用场景
 
-![image-20230112204400784](E:\code\my_code\demo\mapstruct\src\main\java\com\wmq\mapstruct\pic\1.1.png)
+![image-20230112204400784](..\mapstruct\src\main\java\com\wmq\mapstruct\pic\1.1.png)
 
-![image-20230112204626752](E:\code\my_code\demo\mapstruct\src\main\java\com\wmq\mapstruct\pic\1.2.png)
+![image-20230112204626752](..\mapstruct\src\main\java\com\wmq\mapstruct\pic\1.2.png)
 
 VO（Value Object）值对象
 
@@ -70,4 +70,22 @@ https://blog.csdn.net/JokerLJG/article/details/119656022
 ## 五、@AfterMapping和@MappingTarget
 
 - 再映射最后一步对属性进行自定义映射处理
+
+## 六、@BeanMapping
+
+- ignoreByDefault: 忽略mapstruct的默认映射行为，只映射配置了@Mapping的属性。避免不需要的赋值，避免属性覆盖
+
+## 七、@InheritConfiguration
+
+- 更新的场景，避免同样的配置重复编写
+
+## 八、@InheritInverseConfiguration
+
+- 反向映射不需要反过来再写一遍 （只继承@Mapping注解，不继承@BeanMapping，但是高版本会继承）
+
+## 九、与Spring结合使用
+
+```
+@Mapper(componentModel = "spring")
+```
 

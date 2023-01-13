@@ -1,13 +1,9 @@
 package com.wmq.mapstruct.beans.dto;
 
 public class DriverDTO {
-    /**
-     * id
-     */
+
     private Long id;
-    /**
-     * Ãû×Ö
-     */
+
     private String name;
 
     public Long getId() {

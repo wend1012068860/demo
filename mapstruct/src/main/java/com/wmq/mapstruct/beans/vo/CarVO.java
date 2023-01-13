@@ -13,37 +13,21 @@ import java.util.List;
  * @description:
  */
 public class CarVO {
-    /**
-     * id
-     */
+
     private Long id;
-    /**
-     * 车辆编号
-     */
+
     private String vin;
-    /**
-     * 裸车价
-     */
+
     private Double price;
-    /**
-     * 总价
-     */
+
     private String totalPrice;
-    /**
-     * 生产日期
-     */
+
     private String publishDate;
-    /**
-     * 品牌
-     */
+
     private String brandName;
-    /**
-     * 汽车零件列表
-     */
+
     private Boolean hasPart;
-    /**
-     * 司机
-     */
+
     private DriverVO driverVO;
 
     public Long getId() {

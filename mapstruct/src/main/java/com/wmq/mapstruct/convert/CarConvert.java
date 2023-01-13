@@ -5,6 +5,7 @@ import com.wmq.mapstruct.beans.dto.DriverDTO;
 import com.wmq.mapstruct.beans.dto.PartDTO;
 import com.wmq.mapstruct.beans.vo.CarVO;
 import com.wmq.mapstruct.beans.vo.DriverVO;
+import com.wmq.mapstruct.beans.vo.VehicleVO;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 import org.springframework.util.CollectionUtils;
@@ -12,10 +13,10 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 
 /**
- * carÏà¹Øpojo
+ * carç›¸å…³pojo
  */
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CarConvert {
     CarConvert instance = Mappers.getMapper(CarConvert.class);
 
@@ -31,10 +32,43 @@ public interface CarConvert {
     @Mapping(source = "name", target = "fullName")
     DriverVO driverDTOToDriverVO(DriverDTO driverDTO);
 
-    @AfterMapping //±íÊ¾ÈÃmapstructÔÚµ÷ÓÃÍê×Ô¶¯×ª»»µÄ·½·¨ºóÔÙÀ´µ÷ÓÃ±¾·½·¨
-    default void dtoToVoAfter(CarDTO carDTO, @MappingTarget CarVO carVO){ // @MappingTarget: ±íÊ¾´«À´µÄCarVO¶ÔÏóÊÇÒÑ¾­¸³Öµ¹ıµÄ
+    @AfterMapping //å†æ˜ å°„æœ€åä¸€æ­¥å¯¹å±æ€§è¿›è¡Œè‡ªå®šä¹‰æ˜ å°„å¤„ç†
+    default void dtoToVoAfter(CarDTO carDTO, @MappingTarget CarVO carVO){ // @MappingTarget: å¯¹å·²ç»æ˜ å°„è¿‡çš„CarVOè¿›è¡Œèµ‹å€¼
         List<PartDTO> partDTOS = carDTO.getPartDTOS();
         boolean hasPart = !CollectionUtils.isEmpty(partDTOS);
         carVO.setHasPart(hasPart);
     }
+
+    /**
+     * carDTOToCarVO æ‰¹é‡æ˜ å°„
+     */
+    List<CarVO> carDTOsToCarVOs(List<CarDTO> carDTOs);
+
+    /**
+     * å¿½ç•¥mapstructçš„é»˜è®¤æ˜ å°„è¡Œä¸ºï¼Œåªæ˜ å°„é…ç½®äº†@Mappingçš„å±æ€§
+     * @param carDTO
+     * @return
+     */
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "brand", target = "brandName")
+    VehicleVO carDTOToVehicleVO(CarDTO carDTO);
+
+    /**
+     * @InheritConfigurationé¿å…åŒæ ·çš„é…ç½®é‡å¤ç¼–å†™
+     * @param carDTO
+     * @param vehicleVO
+     */
+    @InheritConfiguration
+    void updateVehicleVO(CarDTO carDTO, @MappingTarget VehicleVO vehicleVO);
+
+    /**
+     * @InheritInverseConfigurationåå‘æ˜ å°„
+     * name:éœ€è¦åå‘æ˜ å°„çš„æ–¹æ³•å
+     * @param vehicleVO
+     * @return
+     */
+    @InheritInverseConfiguration(name = "carDTOToVehicleVO")
+    CarDTO vehicleVOToCarDTO(VehicleVO vehicleVO);
+
 }

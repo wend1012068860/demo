@@ -9,37 +9,21 @@ import java.util.List;
  * @description:
  */
 public class CarDTO {
-    /**
-     * id
-     */
+
     private Long id;
-    /**
-     * 车辆编号
-     */
+
     private String vin;
-    /**
-     * 裸车价
-     */
+
     private double price;
-    /**
-     * 总价
-     */
+
     private double totalPrice;
-    /**
-     * 生产日期
-     */
+
     private Date publishDate;
-    /**
-     * 品牌
-     */
+
     private String brand;
-    /**
-     * 汽车零件列表
-     */
+
     private List<PartDTO> partDTOS;
-    /**
-     * 司机
-     */
+
     private DriverDTO driverDTO;
 
     public Long getId() {
