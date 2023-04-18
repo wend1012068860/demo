@@ -4,9 +4,11 @@ package com.wmq.mapstruct;
 import com.wmq.mapstruct.beans.dto.CarDTO;
 import com.wmq.mapstruct.beans.dto.DriverDTO;
 import com.wmq.mapstruct.beans.dto.PartDTO;
+import com.wmq.mapstruct.beans.dto.VehicleDTO;
 import com.wmq.mapstruct.beans.vo.CarVO;
 import com.wmq.mapstruct.beans.vo.VehicleVO;
 import com.wmq.mapstruct.convert.CarConvert;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,24 @@ public class MapstructTest {
 
     @Autowired
     private CarConvert carConvert;
+
+
+
+
+
+
+    @Test
+    public void test(){
+        VehicleDTO vehicleDTO = new VehicleDTO();
+        vehicleDTO.setId(1L);
+        vehicleDTO.setBrand("111");
+        vehicleDTO.setPrice(123.12d);
+        VehicleVO vehicleVO = CarConvert.instance.vehicleDTOToVehicleVO(vehicleDTO);
+        System.out.println(vehicleVO);
+    }
+
+
+
 
     /**
      * CarDTO -> CarVO
